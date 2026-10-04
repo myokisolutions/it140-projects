@@ -10,26 +10,40 @@
 START get_item
 
     FUNCTION get_item(current_room, item, player_inventory)
-    # Consider the current room, item in that room, and player's inventory.
 
-        OUTPUT "Is the item already in the inventory?
+        OUTPUT "Is the item already in the player inventory?
+        INPUT "Enter your item command"
 
-        IF item IN inventory:
+        IF item IN player_inventory:
 
-            OUTPUT "item already in inventory"
+            OUTPUT "item already in player_inventory"
 
-        ELSE IF Item IN current_room:
+        ELSE IF item IN current_room:
 
-            ADD item to inventory
+            ADD item to player_inventory
+            OUTPUT " Yay! New item added in your inventory"
             
         ELSE:
         
-            OUTPUT "no such item in room"
+            OUTPUT "No such item in room"
 
-        Return inventory
+        Return player_inventory
 
 END get_item
 
 
+WHILE game_over == FALSE:
+    OUTPUT current_room detail
+    INPUT "Please enter your item command:" INTO item
+
+    IF item In current_room:
+        player_inventory = get_item(current_room, item, player_inventory)
+    
+    CONTINUE gameplay
+
+END WHILE
+
 # References
+
+Microsoft. (10, 2026). How to show the process returns to or continues [Generative AI chat]. Copilot. https://copilot.cloud.microsoft/chat/conversation/34cbae2b-6ffa-4d69-8628-83c10908274f?fromCode=cmcv2&redirectId=09B7D97BA0354867A06EF697C3F92C00
 
