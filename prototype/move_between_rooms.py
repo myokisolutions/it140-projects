@@ -9,14 +9,36 @@ rooms = {
 }
 
 
-# TODO: Set the player's starting room for the simplified prototype.
+# Start the player in the Hall
+current_room = "Great Hall"
 
-# TODO: Create the gameplay loop required by the milestone.
-# Within the loop, complete the required behavior in small steps:
-#   1. Display the current room.
-#   2. Prompt for a movement command or "exit".
-#   3. Branch for a valid move, exit, or invalid input.
-#   4. Update the room only after a valid movement command.
-#   5. Continue until the required exit condition is reached.
+# print a welcome message and the current room.
+print("Welcome to the Dragon Text Game!")
 
-# TODO: Run and debug all milestone cases in prototype/README.md.
+print("Move commands: North, South, East, West, exit")
+
+print("-" * 40)
+# loop until the player enters "exit" or a valid movement command.
+while True:
+    # display the room before each movement prompt for clarity.
+    print(f"You are in the {current_room}.")
+
+    # prompt for a movement command or "exit".
+    command = input("Enter your move: \n").strip().lower()
+
+    # check if the player wants to exit.
+    if command == "exit":
+        print("Thanks for playing the game. Hope you enjoyed it.")
+        break
+        print("-" * 40)
+
+    # check if the command is a valid movement direction.
+    if command in rooms[current_room]:
+        # update the current room based on the movement command.
+        current_room = rooms[current_room][command]
+        print(f"You move {command} to the {current_room}.")
+        print("-" * 40)
+    else:
+        # handle invalid movement commands.
+        print("Invalid command entered!")
+        print("-" * 40)
